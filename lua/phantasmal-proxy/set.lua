@@ -23,3 +23,5 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.colorcolumn = " "
+
+vim.cmd("set guitablabel=%t")

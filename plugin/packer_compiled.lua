@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -144,10 +149,30 @@ _G.packer_plugins = {
     path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-go"] = {
+    loaded = true,
+    path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/vim-go",
+    url = "https://github.com/fatih/vim-go"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-twiggy"] = {
+    loaded = true,
+    path = "/home/phantasmal-proxy/.local/share/nvim/site/pack/packer/start/vim-twiggy",
+    url = "https://github.com/sodapopcan/vim-twiggy"
   }
 }
 
