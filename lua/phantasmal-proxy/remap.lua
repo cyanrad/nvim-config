@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- going back to file explorer
+vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
 
 -- visual highlighted text movement
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -31,6 +33,7 @@ vim.keymap.set("n", "<C-`>", function()
     vim.cmd("tabnew tab")
     vim.cmd("term")
 end)
+
 -- moving between them
 vim.keymap.set("n", "<A-L>", "gt")
 vim.keymap.set("n", "<A-H>", "gT")
@@ -55,3 +58,13 @@ vim.keymap.set("i", "[", "[]<left>")
 vim.keymap.set("i", "{", "{}<left>")
 vim.keymap.set("i", "{<CR>", "{<CR>}<ESC>O")
 vim.keymap.set("i", "{;<CR>", "{<CR>};<ESC>O")
+
+-- Absolute tab mapping
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- Map Alt + number to switch to the corresponding tab
+for i = 1, 9 do
+    map('n', '<M-' .. i .. '>', ':tabnext ' .. i .. '<CR>', opts)
+    map('i', '<M-' .. i .. '>', '<Esc>:tabnext ' .. i .. '<CR>', opts) -- Also map in insert mode
+end
