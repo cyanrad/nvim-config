@@ -41,6 +41,18 @@ lsp.set_preferences({
     }
 })
 
+local autocmd_group = vim.api.nvim_create_augroup("Custom auto-commands", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    pattern = { "*.py" },
+    desc = "Auto-format python files after saving",
+    callback = function()
+        local fileName = vim.api.nvim_buf_get_name(0)
+        vim.cmd(":silent !black " .. fileName)
+    end,
+    group = autocmd_group,
+})
+
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     local new_tab_keys = vim.api.nvim_replace_termcodes('<C-w>s<C-w>j<C-w>T', true, false, true)
@@ -73,6 +85,7 @@ lsp.format_on_save({
         ['tsserver'] = { 'typescript' },
         ['lua_ls'] = { 'lua' },
         ['gopls'] = { 'go' },
+        ['black'] = { 'python' }
     }
 })
 
