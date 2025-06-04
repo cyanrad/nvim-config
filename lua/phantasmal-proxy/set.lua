@@ -24,4 +24,4 @@ vim.opt.colorcolumn = "80"
 
 vim.g.colorcolumn = " "
 
-vim.cmd("set guitablabel=%t")
+-- vim.cmd("set guitablabel=%t")

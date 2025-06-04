@@ -4,11 +4,11 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 -- default installed lsps
-lsp.ensure_installed({
-    'tsserver',
-    'lua_ls',
-    'gopls',
-})
+-- lsp.ensure_installed({
+--     'tsserver',
+--     'lua_ls',
+--     'gopls',
+-- })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
@@ -53,20 +53,26 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     group = autocmd_group,
 })
 
+-- for some reason we need to specify to take the frist item in the quickfix list
+local function on_list(options)
+    vim.fn.setqflist({}, ' ', options)
+    vim.api.nvim_command('cfirst')
+end
+
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     local new_tab_keys = vim.api.nvim_replace_termcodes('<C-w>s<C-w>j<C-w>T', true, false, true)
     local split_screen_keys = vim.api.nvim_replace_termcodes('<C-w>v<C-w>l', true, false, true)
 
     -- get definition
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition { on_list = on_list } end, opts)
     vim.keymap.set("n", "<Leader>gd", function()
-        vim.lsp.buf.definition()
+        vim.lsp.buf.definition { on_list = on_list }
         vim.api.nvim_feedkeys(new_tab_keys, 'n', false)
     end, opts)
     vim.keymap.set("n", "<C-g><C-d>", function()
         vim.api.nvim_feedkeys(split_screen_keys, 'n', false)
-        vim.lsp.buf.definition()
+        vim.lsp.buf.definition { on_list = on_list }
     end, opts)
 
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)                  -- knowledge

@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 
     -- fuzzy file finder
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
@@ -14,7 +14,7 @@ return require('packer').startup(function(use)
     use({ 'rose-pine/neovim', as = 'rose-pine' })
 
     -- code tree parser
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' });
+    use('nvim-treesitter/nvim-treesitter');
     use("nvim-treesitter/nvim-treesitter-context");
 
 
@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
 
     -- additional go support
-    use('fatih/vim-go')
+    -- use('fatih/vim-go')
 
     -- lsp zero
     use {
