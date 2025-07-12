@@ -1,6 +1,0 @@
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-o>', builtin.find_files, { desc = 'Search for a file' })
-vim.keymap.set('n', '<C-h>', builtin.oldfiles, { desc = 'Opens history' })
-vim.keymap.set('n', '<C-s>', builtin.grep_string, { desc = 'Searches for a string in a file' })
-vim.keymap.set('n', '<leader>o', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Lists open buffers in current neovim instance' })

@@ -1,11 +1,8 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
 vim.g.mapleader = " "
-
--- going back to file explorer
-vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
-
--- visual highlighted text movement
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- easy system clipboard copy
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -26,32 +23,17 @@ vim.keymap.set({ "n", "v" }, "<leader>D", [["_D]])
 
 -- creating a tab
 vim.keymap.set("n", "<C-t>", function()
-    vim.cmd("tabnew tab")
-    vim.cmd("Ex")
+  vim.cmd("tabnew tab")
 end)
 vim.keymap.set("n", "<C-`>", function()
-    vim.cmd("tabnew tab")
-    vim.cmd("term")
+  vim.cmd("term")
 end)
-
--- moving between them
-vim.keymap.set("n", "<A-L>", "gt")
-vim.keymap.set("n", "<A-H>", "gT")
 
 -- exiting terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
--- moving between split screens
-vim.keymap.set("n", "<A-h>", "<C-w>h")
-vim.keymap.set("n", "<A-j>", "<C-w>j")
-vim.keymap.set("n", "<A-k>", "<C-w>k")
-vim.keymap.set("n", "<A-l>", "<C-w>l")
-
--- remapping alternate file because ^ is not working for me
-vim.keymap.set("n", "<C-p>", "<C-^>")
-
 -- remapping for closing surrounds
-vim.keymap.set("i", "\"", "\"\"<left>")
+vim.keymap.set("i", '"', '""<left>')
 vim.keymap.set("i", "'", "''<left>")
 vim.keymap.set("i", "(", "()<left>")
 vim.keymap.set("i", "[", "[]<left>")
@@ -65,6 +47,6 @@ local opts = { noremap = true, silent = true }
 
 -- Map Alt + number to switch to the corresponding tab
 for i = 1, 9 do
-    map('n', '<M-' .. i .. '>', ':tabnext ' .. i .. '<CR>', opts)
-    map('i', '<M-' .. i .. '>', '<Esc>:tabnext ' .. i .. '<CR>', opts) -- Also map in insert mode
+  map("n", "<M-" .. i .. ">", ":tabnext " .. i .. "<CR>", opts)
+  map("i", "<M-" .. i .. ">", "<Esc>:tabnext " .. i .. "<CR>", opts) -- Also map in insert mode
 end
